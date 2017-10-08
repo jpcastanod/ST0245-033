@@ -1,106 +1,53 @@
-import java.lang.IndexOutOfBoundsException; // Usar esto cuando se salga el índice
-// Una lista simplemente enlazada
-public class LinkedListMauricioT {
-    Node first;
-    int size; 
-    public LinkedListMauricioT()
-    {
-        size = 0;
-        first = null;   
-    }
+import static org.junit.Assert.*;
 
-    /**
-     * Returns the node at the specified position in this list.
-     * @param index - index of the node to return
-     * @return the node at the specified position in this list
-     * @throws IndexOutOfBoundsException
-     */
-    private Node getNode(int index) throws IndexOutOfBoundsException {
-        if (index >= 0 && index < size) {
-            Node aux = first;
-            for (int i = 0; i < index; i++) {
-                aux = aux.next;
-            }
-            return aux;
-        } else {
-            throw new IndexOutOfBoundsException();
-        }
-    }
+import org.junit.Test;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
-    /**
-     * Returns the element at the specified position in this list.
-     * @param index - index of the element to return
-     * @return the element at the specified position in this list
-     */
-    public int get(int index) {
-        Node temp = null;
-        try {
-            temp = getNode(index);
-        } catch (IndexOutOfBoundsException e) {
-            e.printStackTrace();
-            System.exit(0);
-        }
-
-        return temp.data;
-    }
-
-    public int size()
-    {
-        return size;
-    }
+public class LinkedListMauricioTest {
     
-    public void insert(int data, int index)
-    {   
-        if(index < 0 || index > size){
-            throw new IndexOutOfBoundsException();           
-        }
-        if(index == 0){
-            Node nuevo = new Node(data);
-            nuevo.next = first;
-            first = nuevo;
-            ++size;
-        } 
-        else {
-            Node nuevo = new Node(data);
-            Node temp = first;
-            for(int i=1; i<=index-1; ++i){
-               temp = temp.next;
-            }
-            nuevo.next = temp.next;
-            temp.next = nuevo;
-            ++size;
-        }
-     }
-    
-    // Borra el dato en la posición index
-    public void remove(int index)
-    {
-        if(index < 0 || index > size){
-            throw new IndexOutOfBoundsException();           
-        }
-        if(index == 0){
-            Node temp = first;
-            first = temp.next;
-            --size;
-        } 
-        else {
-            Node temp = first;
-            for(int i=1; i<=index-1; ++i){
-               temp = temp.next;
-            }
-            temp.next = temp.next.next;
-            --size;
-        }
-    }
-    
+	@Test
+	public void testInsert() {
+		LinkedListMauricio list = new LinkedListMauricio();
+		list.insert(5, 0);
+		list.insert(4, 0);
+		list.insert(3, 0); 
+		list.insert(2, 0);
+		list.insert(1, 0);
+		for (int i = 0; i < list.size(); i++)
+		{
+			assertEquals(list.get(0),1);
+			assertEquals(list.get(1),2);
+			assertEquals(list.get(2),3);
+			assertEquals(list.get(3),4);
+			assertEquals(list.get(4),5);			
+		}		
+	}
 
-    public boolean contains(int data)
-    {
-        for(int i = 0; i <= size-1; ++i){
-            if(get(i)==data){
-                return true;
-            }
-        }
-        return false;
-    }
+	@Test
+	public void testRemove() {
+		LinkedListMauricio list = new LinkedListMauricio();
+		list.insert(5, 0);
+		list.insert(4, 0);
+		list.insert(3, 0);
+		list.insert(2, 0);
+		list.insert(1, 0);
+		assertTrue(list.contains(3));
+		list.remove(2);
+		assertFalse(list.contains(3));
+	}
+
+	@Test
+	public void testContains() {
+		LinkedListMauricio list = new LinkedListMauricio();
+		list.insert(5, 0);
+		list.insert(4, 0);
+		list.insert(3, 0);
+		list.insert(2, 0);
+		list.insert(1, 0);
+		assertTrue(list.contains(3));
+		assertFalse(list.contains(10));
+	}
+
 }
