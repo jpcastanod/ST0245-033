@@ -137,30 +137,23 @@ public class BinaryTree {
         Node AbueloMaterno = new Node("Miguel");
         Node BisAbuelaMP = new Node("Sandra");
         Node BisAbueloMP = new Node("");
-        
         tree.insertar(Raiz.data, "Hombre"); 
         tree.insertar(Madre.data, "mujer"); 
-        tree.insertar(Padre.data, "Hombre");
-        
+        tree.insertar(Padre.data, "Hombre");  
         tree.insertar(tree.root.right, AbuelaPaterna.data, "mujer");
         tree.insertar(tree.root.right.left, BisAbuelaPM.data, "Mujer");
-        tree.insertar(tree.root.right.left, BisAbueloPM.data, "Hombre");
-        
+        tree.insertar(tree.root.right.left, BisAbueloPM.data, "Hombre");        
         tree.insertar(tree.root.right, AbueloPaterno.data, "hombre");
         tree.insertar(tree.root.right.right, BisAbuelaPP.data, "Mujer");
-        tree.insertar(tree.root.right.right, BisAbueloPP.data, "hombre");
-        
+        tree.insertar(tree.root.right.right, BisAbueloPP.data, "hombre");        
         tree.insertar(tree.root.left, AbuelaMaterna.data, "mujer");
         tree.insertar(tree.root.left.left, BisAbuelaMM.data, "Mujer");
-        tree.insertar(tree.root.left.left, BisAbueloMM.data, "Hombre");
-        
+        tree.insertar(tree.root.left.left, BisAbueloMM.data, "Hombre");      
         tree.insertar(tree.root.left, AbueloMaterno.data, "Hombre");
         tree.insertar(tree.root.left.right, BisAbuelaMP.data, "Mujer");
-        tree.insertar(tree.root.left.right, BisAbueloMP.data, "Hombre");
-        
+        tree.insertar(tree.root.left.right, BisAbueloMP.data, "Hombre");        
         System.out.println("Árbol 1: \n");
         Laboratorio5.dibujarArbol(tree);    
-        System.out.println("\nÁrbol 2: \n");
         System.out.println("Altura árbol 1: " + tree. maxheight());
         System.out.println(tree.buscar("Ana"));
         System.out.println(tree.buscar("Eva"));
